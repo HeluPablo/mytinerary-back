@@ -1,5 +1,5 @@
 let citiesCreate = [
-    {
+{
     "name": "Bangkok",
     "continent": "Asia",
     "photo": "https://th.bing.com/th/id/R.5734e2df48e9b3cf68ab86e8882fd4f0?rik=u0nlmzhBXiJr%2fQ&riu=http%3a%2f%2fwww.rossocorallo.info%2fwp-content%2fuploads%2f2018%2f09%2fBANGKOK.jpg&ehk=wo1GrgynMxo6Vc84TwhBYiLf1%2bLKSfDDOyoaYh5gD1w%3d&risl=&pid=ImgRaw&r=0",
