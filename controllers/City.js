@@ -39,5 +39,32 @@ const cityController = {
             });
         }
     },
+    readOne: async (req, res) => {
+        let id = req.params.id;  ///Id pasado por parametros. 
+        try {
+            let city = await City.findOne({ _id: id })   ////Busqueda que realiza en MongoDB (Comparación)
+            .populate({  
+                path: "userId",
+                select: "name photo -_id",
+            });
+            if (city) {
+                res.status(200).json({
+                    response: city,
+                    success: true,
+                    message: "City found successfully",
+                });
+            } else {
+                res.status(404).json({
+                    success: false,
+                    message: error.message,
+                });
+            }
+        } catch (error) {
+            res.status(400).json({
+                success: false,
+                message: error.message,
+            });
+        }
+    },
 }
     module.exports = cityController;
