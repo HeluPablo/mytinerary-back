@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+let city = require('./cities');
+let user = require('./users');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.use('/api/users', user);
+router.use('/api/cities', city);
+
 
 module.exports = router;
