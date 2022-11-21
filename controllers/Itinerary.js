@@ -7,7 +7,7 @@ const controller = {
     read: async (req, res) => {
         let query = {};
 
-        
+
         if (req.query.cityId) {
             query = {
                 cityId: req.query.cityId
@@ -34,6 +34,20 @@ const controller = {
             });
         }
     },
-
+   create: async (req, res) => {
+        try {
+            let itinerary = await Itinerary.create(req.body);
+            res.status(201).json({
+                response: itinerary._id,
+                success: true,
+                message: "Itinerary created successfully",
+            });
+        } catch (error) {
+            res.status(400).json({
+                success: false,
+                message: error.message,
+            });
+        }
+    },
 }
 module.exports = controller;
