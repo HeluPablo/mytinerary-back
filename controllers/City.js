@@ -17,16 +17,20 @@ const cityController = {
         }
     },
     readAll: async (req, res) => {
+
+        //// Filtro para continente y nombre
         let query = {};
+        /// Si le paso un continente, entonces, que lo coloque en query
         if (req.query.continent) {
             query = { continent: req.query.continent };
         }
+        /// Si le paso un nombre, entonces, que lo coloque en query
         if (req.query.name) {
             query = {...query, name: { $regex: req.query.name, $options: "i" },
             };
         }
         try {
-            let city = await City.find(query);
+            let city = await City.find(query); ///Buscará según la query
             res.status(200).json({
                 response: city,
                 success: true,
@@ -67,9 +71,10 @@ const cityController = {
         }
     },
     update: async (req, res) => {
-        let id = req.params.id;
+
+        let id = req.params.id; /// Parametro pasado por id
         try {
-            let city = await City.findOneAndUpdate({ _id: id }, req.body, {new: true} )
+            let city = await City.findOneAndUpdate({ _id: id }, req.body, {new: true} ) /// Buscar por parametro, y actualizar al nuevo cuerpo
             
             if (city) {
                 res.status(200).json({
