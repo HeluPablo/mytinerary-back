@@ -24,6 +24,9 @@ const cityController = {
         if (req.query.continent) {
             query = { continent: req.query.continent };
         }
+        if (req.query.userId) {
+            query = { userId: req.query.userId };
+        }
         /// Si le paso un nombre, entonces, que lo coloque en query
         if (req.query.name) {
             query = {...query, name: { $regex: req.query.name, $options: "i" },
