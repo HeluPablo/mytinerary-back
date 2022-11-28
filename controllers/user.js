@@ -4,10 +4,10 @@ const userController = {
 
     createUser: async (req, res) => {
         try {         
-            let new_user = await User.create(req.body);
+            let newUser = await User.create(req.body);
             res.status(201).json(
                 {
-                id: new_user._id,
+                response: newUser,
                 success: true,
                 message: 'User created'
                 }
