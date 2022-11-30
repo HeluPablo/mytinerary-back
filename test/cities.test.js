@@ -3,8 +3,8 @@ const chai = require("chai");
 const assert = chai.assert;
 const request = require("supertest");
 
-describe("/api/cities", function () {  /// Test de  la MT-01-37
-  it("should return an array of objects", function (done) {
+describe("/api/cities", function () {  
+  it("should return an array of objects", function (done) {/// Test de  la MT-01-37
     request(app)
       .get("/api/cities/")
       .expect((res) => {
