@@ -8,13 +8,14 @@ const controller = {
       query = {
         cityId: req.query.cityId,
       };
-      
-      if (req.query.userId) {
-        query = { userId: req.query.userId };
-      }
+    }
+    if (req.query.userId) {
+      query = { userId: req.query.userId };
     }
 
     try {
+      console.log(query);
+      console.log(req.query);
       let itineraries = await Itinerary.find(query);
       if (itineraries) {
         res.status(200).json({
@@ -62,6 +63,29 @@ const controller = {
           response: itinerary,
           success: true,
           message: "Itinerary update successfully",
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: error.message,
+        });
+      }
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  },
+  readOne: async (req, res) => {
+    let id = req.params.id;
+    try {
+      let itinerary = await Itinerary.findOne({ _id: id });
+      if (itinerary) {
+        res.status(200).json({
+          response: itinerary,
+          success: true,
+          message: "Itinerary found successfully",
         });
       } else {
         res.status(404).json({
