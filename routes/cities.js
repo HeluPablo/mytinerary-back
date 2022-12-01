@@ -4,7 +4,7 @@ let { createCity , readAll , readOne, update, destroy} = require('../controllers
 router.post('/', createCity);
 router.get('/', readAll);
 router.get('/:id', readOne);
-router.put("/:id",update)
+router.put('/:id',update)
 router.delete("/:id", destroy)
 
 module.exports = router;
